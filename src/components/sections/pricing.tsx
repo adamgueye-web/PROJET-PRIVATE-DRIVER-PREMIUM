@@ -1,9 +1,9 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Container, Eyebrow, GoldButton, SectionTitle } from "@/components/ui";
 import { defaultWaText, fares, waLink } from "@/lib/site";
 
 // Sous md la ligne se plie : le trajet au-dessus, durée et prix côte à côte.
-const row = "grid gap-1.5 md:gap-4 md:[grid-template-columns:2.4fr_1fr_1fr]";
+const row = "grid md:gap-4 md:[grid-template-columns:2.4fr_1fr_1fr]";
 
 export function Pricing() {
   return (
@@ -31,20 +31,29 @@ export function Pricing() {
           {fares.map((fare) => (
             <div
               key={fare.route}
-              className={`${row} items-center border-t border-white/8 px-6 py-5.5`}
+              className={`${row} items-center border-t border-white/8 px-5 py-5 md:px-6 md:py-5.5`}
             >
               <span className="text-[17px] text-white">
                 {fare.route}
                 {"detail" in fare && fare.detail ? (
-                  <span className="text-mist"> {fare.detail}</span>
+                  // Le complément passe sous le trajet sur mobile, en retrait.
+                  <span className="mt-1 block text-sm text-mist md:mt-0 md:inline md:text-[17px]">
+                    {" "}
+                    {fare.detail}
+                  </span>
                 ) : null}
               </span>
               {/* md:contents rend les deux valeurs directement à la grille. */}
-              <div className="flex items-baseline justify-between gap-4 md:contents">
-                <span className="text-base text-mist tabular-nums">
+              <div className="mt-3.5 flex items-center justify-between gap-4 md:mt-0 md:contents">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/6 px-2.5 py-1 text-sm whitespace-nowrap text-mist tabular-nums md:bg-transparent md:px-0 md:py-0 md:text-base">
+                  <Clock className="size-3.5 shrink-0 md:hidden" aria-hidden="true" />
                   {fare.duration}
                 </span>
-                <span className="text-[19px] font-semibold text-gold tabular-nums md:text-right">
+                <span className="shrink-0 text-[19px] font-semibold whitespace-nowrap text-gold tabular-nums md:text-right">
+                  {/* Remplace l'en-tête « À partir de », masqué sur mobile. */}
+                  <span className="mr-1.5 text-sm font-normal text-mist md:hidden">
+                    dès
+                  </span>
                   {fare.price}
                 </span>
               </div>
