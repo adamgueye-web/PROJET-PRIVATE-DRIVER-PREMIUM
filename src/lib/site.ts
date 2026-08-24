@@ -122,7 +122,7 @@ export const destinations = [
   { name: "Lac Rose", region: "Grande Côte", duration: "50 min", price: "dès 65 000 FCFA" },
   { name: "Sine Saloum", region: "Delta", duration: "3h", price: "Sur devis" },
   { name: "Touba", region: "Centre", duration: "2h30", price: "Sur devis" },
-  { name: "Somone", region: "Petite Côte", duration: "1h20", price: "dès 45 000 FCFA" },
+  { name: "Somone", region: "Petite Côte", duration: "1h20", price: "dès 55 000 FCFA" },
 ] as const;
 
 export const faq = [

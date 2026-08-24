@@ -9,11 +9,9 @@ export function Pricing() {
   return (
     <section
       id="tarifs"
-      className="relative scroll-mt-18 bg-ink py-[clamp(64px,8vw,120px)]"
+      className="scroll-mt-18 bg-ink py-[clamp(64px,8vw,120px)]"
     >
-      <div className="grain-gold pointer-events-none absolute inset-0 opacity-4" />
-
-      <Container className="relative">
+      <Container>
         <Eyebrow>Tarifs transparents</Eyebrow>
         <SectionTitle className="mb-12 max-w-[640px]">
           Des prix fixes, affichés à l&apos;avance.

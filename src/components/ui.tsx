@@ -70,24 +70,3 @@ export function GoldButton({
     </a>
   );
 }
-
-/** Aplat rayé qui tient la place d'une photo à venir. */
-export function PhotoSlot({
-  label,
-  tone = "light",
-  className = "",
-}: {
-  label: string;
-  tone?: "light" | "dark";
-  className?: string;
-}) {
-  return (
-    <div
-      className={`grid place-items-center p-3 text-center font-mono text-[11px] ${
-        tone === "light" ? "hatch-light text-stone" : "hatch-dark text-mist"
-      } ${className}`}
-    >
-      {label}
-    </div>
-  );
-}

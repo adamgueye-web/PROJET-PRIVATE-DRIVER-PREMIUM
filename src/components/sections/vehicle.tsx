@@ -1,7 +1,11 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { Container, Eyebrow, GoldButton, PhotoSlot, SectionTitle } from "@/components/ui";
+import { Container, Eyebrow, GoldButton, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { defaultWaText, vehicleFeatures, waLink } from "@/lib/site";
+import van1 from "@/images/van-1.webp";
+import van2 from "@/images/van-2.webp";
+import van3 from "@/images/van-3.webp";
 
 export function Vehicle() {
   return (
@@ -40,21 +44,37 @@ export function Vehicle() {
           </Reveal>
 
           <Reveal className="grid grid-cols-2 gap-3">
-            <PhotoSlot
-              label="van, extérieur 3/4 avant"
-              tone="dark"
-              className="col-span-2 aspect-video rounded-[20px]"
-            />
-            <PhotoSlot
-              label="intérieur, sièges"
-              tone="dark"
-              className="aspect-4/3 rounded-[20px]"
-            />
-            <PhotoSlot
-              label="coffre chargé"
-              tone="dark"
-              className="aspect-4/3 rounded-[20px]"
-            />
+            {/* Le fond bleu nuit de cette photo prolonge celui de la section. */}
+            <div className="relative col-span-2 aspect-video overflow-hidden rounded-[20px] border border-white/8">
+              <Image
+                src={van3}
+                alt="Van noir de trois quarts avant, carrosserie brillante"
+                fill
+                sizes="(min-width: 1024px) 560px, 100vw"
+                className="object-cover"
+                placeholder="blur"
+              />
+            </div>
+            <div className="relative aspect-4/3 overflow-hidden rounded-[20px] border border-white/8">
+              <Image
+                src={van2}
+                alt="Van noir vu de profil, portes latérales coulissantes"
+                fill
+                sizes="(min-width: 1024px) 275px, 50vw"
+                className="object-cover"
+                placeholder="blur"
+              />
+            </div>
+            <div className="relative aspect-4/3 overflow-hidden rounded-[20px] border border-white/8">
+              <Image
+                src={van1}
+                alt="Van noir stationné face à l'océan au coucher du soleil"
+                fill
+                sizes="(min-width: 1024px) 275px, 50vw"
+                className="object-cover"
+                placeholder="blur"
+              />
+            </div>
           </Reveal>
         </div>
       </Container>

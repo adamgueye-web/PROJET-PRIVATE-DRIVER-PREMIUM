@@ -45,42 +45,9 @@
   }
 }
 
+/* Fond de repli du hero, visible le temps que la photo se charge. */
 @utility hero-bg {
-  background:
-    linear-gradient(rgba(10, 23, 33, 0.7), rgba(10, 23, 33, 0.78)),
-    repeating-linear-gradient(115deg, #132b3a 0 22px, #0f2431 22px 44px);
-}
-
-/* Trame décorative discrète, superposée aux sections sombres. */
-@utility grain-cross {
-  background-image:
-    repeating-linear-gradient(45deg, #d9a441 0 2px, transparent 2px 12px),
-    repeating-linear-gradient(-45deg, #b4573b 0 2px, transparent 2px 12px);
-}
-
-@utility grain-gold {
-  background-image: repeating-linear-gradient(
-    45deg,
-    #d9a441 0 2px,
-    transparent 2px 14px
-  );
-}
-
-/* Aplats rayés qui tiennent la place des photos à venir. */
-@utility hatch-light {
-  background: repeating-linear-gradient(
-    135deg,
-    #ebe5da 0 10px,
-    #f7f4ef 10px 20px
-  );
-}
-
-@utility hatch-dark {
-  background: repeating-linear-gradient(
-    135deg,
-    #132b3a 0 12px,
-    #16323f 12px 24px
-  );
+  background: linear-gradient(160deg, #16323f 0%, #0f2431 55%, #0a1721 100%);
 }
 
 @utility scroller {
