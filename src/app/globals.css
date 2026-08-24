@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Palette SenegalDrive */
+  --color-ink: #0a1721;
+  --color-ink-800: #132b3a;
+  --color-ink-700: #16323f;
+  --color-ink-900: #0f2431;
+  --color-gold: #d9a441;
+  --color-gold-dark: #c89232;
+  --color-terracotta: #b4573b;
+  --color-cream: #f7f4ef;
+  --color-sand: #ebe5da;
+  --color-mist: #a9b7c2;
+  --color-stone: #5a6670;
+  --color-emerald-deep: #1f7a5c;
+  --color-whatsapp: #25d366;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-general-sans), var(--font-inter), sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background: var(--color-ink);
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-gold);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility hero-bg {
+  background:
+    linear-gradient(rgba(10, 23, 33, 0.7), rgba(10, 23, 33, 0.78)),
+    repeating-linear-gradient(115deg, #132b3a 0 22px, #0f2431 22px 44px);
+}
+
+/* Trame décorative discrète, superposée aux sections sombres. */
+@utility grain-cross {
+  background-image:
+    repeating-linear-gradient(45deg, #d9a441 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(-45deg, #b4573b 0 2px, transparent 2px 12px);
+}
+
+@utility grain-gold {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #d9a441 0 2px,
+    transparent 2px 14px
+  );
+}
+
+/* Aplats rayés qui tiennent la place des photos à venir. */
+@utility hatch-light {
+  background: repeating-linear-gradient(
+    135deg,
+    #ebe5da 0 10px,
+    #f7f4ef 10px 20px
+  );
+}
+
+@utility hatch-dark {
+  background: repeating-linear-gradient(
+    135deg,
+    #132b3a 0 12px,
+    #16323f 12px 24px
+  );
+}
+
+@utility scroller {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+}
+
+/* Apparition au scroll — neutralisée si l'utilisateur réduit les animations. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility reveal-shown {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Le « + » de la FAQ devient « × » quand la réponse est ouverte. */
+details[open] .faq-icon {
+  transform: rotate(45deg);
 }

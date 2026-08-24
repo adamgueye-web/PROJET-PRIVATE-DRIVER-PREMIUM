@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ressources de design (exports Claude Design, maquettes, etc.)
+/Ressouces/
+/Ressources/
