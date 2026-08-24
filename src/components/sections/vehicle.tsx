@@ -3,9 +3,9 @@ import { ArrowRight } from "lucide-react";
 import { Container, Eyebrow, GoldButton, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { defaultWaText, vehicleFeatures, waLink } from "@/lib/site";
-import van2 from "@/images/van-2.webp";
 import van3 from "@/images/van-3.webp";
 import van4 from "@/images/van-4.webp";
+import van5 from "@/images/van-5.webp";
 
 export function Vehicle() {
   return (
@@ -59,18 +59,19 @@ export function Vehicle() {
                 n'entame les pare-chocs. */}
             <div className="relative aspect-3/2 overflow-hidden rounded-[20px] border border-white/8">
               <Image
-                src={van2}
-                alt="Van noir vu de profil, portes latérales coulissantes"
+                src={van4}
+                alt="Van noir de profil côté conducteur, sur fond clair"
                 fill
                 sizes="(min-width: 1024px) 275px, 50vw"
                 className="object-cover"
                 placeholder="blur"
               />
             </div>
+            {/* L'intérieur complète les vues extérieures : sièges et espace. */}
             <div className="relative aspect-3/2 overflow-hidden rounded-[20px] border border-white/8">
               <Image
-                src={van4}
-                alt="Van noir de profil côté conducteur, sur fond clair"
+                src={van5}
+                alt="Intérieur du van : sièges cuir clair et allée centrale"
                 fill
                 sizes="(min-width: 1024px) 275px, 50vw"
                 className="object-cover"
