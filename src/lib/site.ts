@@ -45,24 +45,28 @@ export const benefits = [
 
 export const services = [
   {
-    photo: "accueil AIBD, pancarte",
+    icon: "plane-landing",
     title: "Transfert aéroport AIBD",
     text: "Accueil personnalisé avec pancarte à votre nom, aide aux bagages, trajet direct vers votre hôtel ou votre résidence.",
+    features: ["Accueil pancarte", "Vol suivi en direct", "60 min d'attente incluses"],
   },
   {
-    photo: "van en attente, Plateau",
+    icon: "clock",
     title: "Mise à disposition",
     text: "Un van et son chauffeur à l'heure, à la demi-journée ou à la journée. Idéal pour enchaîner plusieurs rendez-vous.",
+    features: ["Demi-journée ou journée", "Chauffeur dédié", "Arrêts illimités"],
   },
   {
-    photo: "route de Saint-Louis",
+    icon: "map",
     title: "Excursions et régions",
     text: "Saly, Saint-Louis, Lac Rose, Sine Saloum, Touba. Aller-retour ou circuit sur plusieurs jours.",
+    features: ["Aller-retour ou circuit", "Tout le Sénégal", "Même chauffeur"],
   },
   {
-    photo: "délégation, hôtel de séminaire",
+    icon: "briefcase",
     title: "Corporate et événementiel",
     text: "Délégations, séminaires, ONG, mariages. Facturation entreprise et devis sur mesure.",
+    features: ["Facturation entreprise", "Plusieurs véhicules", "Devis sur mesure"],
   },
 ] as const;
 
@@ -113,12 +117,12 @@ export const steps = [
 ] as const;
 
 export const destinations = [
-  { photo: "plage de Saly", name: "Saly", meta: "1h15 depuis Dakar · dès 55 000 FCFA" },
-  { photo: "pont Faidherbe", name: "Saint-Louis", meta: "4h depuis Dakar · dès 150 000 FCFA" },
-  { photo: "Lac Rose", name: "Lac Rose", meta: "50 min depuis Dakar · dès 65 000 FCFA" },
-  { photo: "bolong du Sine Saloum", name: "Sine Saloum", meta: "3h depuis Dakar · sur devis" },
-  { photo: "grande mosquée de Touba", name: "Touba", meta: "2h30 depuis Dakar · sur devis" },
-  { photo: "lagune de la Somone", name: "Somone", meta: "1h20 depuis Dakar · dès 45 000 FCFA" },
+  { name: "Saly", region: "Petite Côte", duration: "1h15", price: "dès 55 000 FCFA" },
+  { name: "Saint-Louis", region: "Nord", duration: "4h", price: "dès 150 000 FCFA" },
+  { name: "Lac Rose", region: "Grande Côte", duration: "50 min", price: "dès 65 000 FCFA" },
+  { name: "Sine Saloum", region: "Delta", duration: "3h", price: "Sur devis" },
+  { name: "Touba", region: "Centre", duration: "2h30", price: "Sur devis" },
+  { name: "Somone", region: "Petite Côte", duration: "1h20", price: "dès 45 000 FCFA" },
 ] as const;
 
 export const faq = [
