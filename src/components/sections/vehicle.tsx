@@ -1,11 +1,22 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container, Eyebrow, GoldButton, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
-import { defaultWaText, vehicleFeatures, waLink } from "@/lib/site";
+import { defaultWaText, fleet, waLink } from "@/lib/site";
 import van3 from "@/images/van-3.webp";
-import van4 from "@/images/van-4.webp";
-import van5 from "@/images/van-5.webp";
+import kiaSportage from "@/images/kia-sportage.jpeg";
+
+/** Une photo par famille de véhicule, dans l'ordre de `fleet`. */
+const fleetImages: Record<string, { src: StaticImageData; alt: string }> = {
+  Van: {
+    src: van3,
+    alt: "Van noir de trois quarts avant, carrosserie brillante",
+  },
+  SUV: {
+    src: kiaSportage,
+    alt: "Kia Sportage blanche de trois quarts avant, garée en ville à Dakar",
+  },
+};
 
 export function Vehicle() {
   return (
@@ -14,72 +25,73 @@ export function Vehicle() {
       className="scroll-mt-18 bg-ink pt-16 pb-[clamp(64px,8vw,120px)]"
     >
       <Container>
-        <div className="grid items-center gap-12 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
-          <Reveal>
-            <Eyebrow>Le véhicule</Eyebrow>
-            <SectionTitle className="mb-5">
-              Vans identiques. Un seul standard.
-            </SectionTitle>
-            <p className="mb-7 text-[17px] leading-relaxed text-mist">
-              Quel que soit le van qui vient vous chercher, vous obtenez exactement
-              le même véhicule, le même équipement, le même niveau de propreté. Pas
-              de loterie.
-            </p>
+        <Reveal className="mb-11 max-w-[640px]">
+          <Eyebrow>La flotte</Eyebrow>
+          <SectionTitle className="mb-5">
+            Van ou SUV. Le bon véhicule pour chaque trajet.
+          </SectionTitle>
+          <p className="text-[17px] leading-relaxed text-mist">
+            Le van pour les transferts et les groupes, le SUV pour la location
+            avec chauffeur et les trajets à quelques-uns. Même exigence
+            d&apos;entretien et de propreté, quel que soit le véhicule qui vient
+            vous chercher.
+          </p>
+        </Reveal>
 
-            <ul className="flex flex-wrap gap-2.5">
-              {vehicleFeatures.map((feature) => (
-                <li
-                  key={feature}
-                  className="rounded-full border border-white/8 px-4 py-2.25 text-sm text-white"
-                >
-                  {feature}
-                </li>
-              ))}
-            </ul>
+        <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+          {fleet.map((vehicle, i) => {
+            const image = fleetImages[vehicle.kind];
+            return (
+              <Reveal key={vehicle.kind} delay={i * 90}>
+                <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-white/8 bg-ink-900">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 560px, 100vw"
+                      className="object-cover"
+                      placeholder="blur"
+                    />
+                    <span className="absolute top-4 left-4 rounded-full bg-ink/80 px-3.5 py-1.5 text-xs font-medium tracking-[0.14em] text-gold uppercase backdrop-blur-sm">
+                      {vehicle.kind}
+                    </span>
+                  </div>
 
-            <GoldButton href={waLink(defaultWaText)} className="mt-7">
-              Réserver ce van
-              <ArrowRight className="size-[17px]" aria-hidden="true" />
-            </GoldButton>
-          </Reveal>
+                  <div className="flex grow flex-col p-6 lg:p-7">
+                    <h3 className="mb-2.5 font-display text-[22px] font-medium text-white">
+                      {vehicle.title}
+                    </h3>
+                    <p className="mb-6 text-base leading-relaxed text-mist">
+                      {vehicle.text}
+                    </p>
 
-          <Reveal className="grid grid-cols-2 gap-3">
-            {/* Le fond bleu nuit de cette photo prolonge celui de la section. */}
-            <div className="relative col-span-2 aspect-video overflow-hidden rounded-[20px] border border-white/8">
-              <Image
-                src={van3}
-                alt="Van noir de trois quarts avant, carrosserie brillante"
-                fill
-                sizes="(min-width: 1024px) 560px, 100vw"
-                className="object-cover"
-                placeholder="blur"
-              />
-            </div>
-            {/* Cadre en 3/2 : le van de profil tient sans que le recadrage
-                n'entame les pare-chocs. */}
-            <div className="relative aspect-3/2 overflow-hidden rounded-[20px] border border-white/8">
-              <Image
-                src={van4}
-                alt="Van noir de profil côté conducteur, sur fond clair"
-                fill
-                sizes="(min-width: 1024px) 275px, 50vw"
-                className="object-cover"
-                placeholder="blur"
-              />
-            </div>
-            {/* L'intérieur complète les vues extérieures : sièges et espace. */}
-            <div className="relative aspect-3/2 overflow-hidden rounded-[20px] border border-white/8">
-              <Image
-                src={van5}
-                alt="Intérieur du van : sièges cuir clair et allée centrale"
-                fill
-                sizes="(min-width: 1024px) 275px, 50vw"
-                className="object-cover"
-                placeholder="blur"
-              />
-            </div>
-          </Reveal>
+                    <ul className="mt-auto flex flex-wrap gap-2.5">
+                      {vehicle.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="rounded-full border border-white/8 px-4 py-2.25 text-sm text-white"
+                        >
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
+
+        <Reveal className="mt-10 flex flex-wrap items-center gap-5">
+          <GoldButton href={waLink(defaultWaText)}>
+            Réserver un véhicule
+            <ArrowRight className="size-[17px]" aria-hidden="true" />
+          </GoldButton>
+          <span className="text-base text-mist">
+            Van ou SUV : dites-nous votre trajet, on vous conseille.
+          </span>
+        </Reveal>
       </Container>
     </section>
   );

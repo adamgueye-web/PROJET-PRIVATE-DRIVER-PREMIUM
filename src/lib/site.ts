@@ -8,7 +8,7 @@ export const site = {
   baseline: "Arrivez sereinement. Partout au Sénégal.",
   whatsappNumber: "+33 6 98 51 16 69",
   location: "Dakar — Sénégal",
-  url: "https://senegaldrive.vercel.app",
+  url: "https://private-driver-premium.vercel.app",
 } as const;
 
 /** Lien wa.me avec message pré-rempli. */
@@ -52,9 +52,9 @@ export const services = [
   },
   {
     icon: "clock",
-    title: "Mise à disposition",
-    text: "Un van et son chauffeur à l'heure, à la demi-journée ou à la journée. Idéal pour enchaîner plusieurs rendez-vous.",
-    features: ["Demi-journée ou journée", "Chauffeur dédié", "Arrêts illimités"],
+    title: "Location avec chauffeur",
+    text: "Un véhicule et son chauffeur, de la demi-journée à plusieurs jours. Van pour les groupes, SUV pour la ville et les trajets à quelques-uns.",
+    features: ["Demi-journée à multi-jours", "Chauffeur dédié", "Van ou SUV"],
   },
   {
     icon: "map",
@@ -92,10 +92,23 @@ export const fares = [
   },
 ] as const;
 
-export const vehicleFeatures = [
-  "7 passagers",
-  "Climatisation",
-  "Eau offerte",
+/**
+ * La flotte se lit en deux familles complémentaires : le van priorise les
+ * transferts et les groupes, le SUV la location avec chauffeur au quotidien.
+ */
+export const fleet = [
+  {
+    kind: "Van",
+    title: "Van 7 places",
+    text: "La référence des transferts aéroport : groupes, familles et bagages volumineux voyagent large et à l'aise.",
+    features: ["7 passagers", "Grand volume bagages", "Climatisation"],
+  },
+  {
+    kind: "SUV",
+    title: "SUV — Kia Sportage & Ford Escape",
+    text: "Idéal pour la location avec chauffeur : trajets à quelques-uns, déplacements en ville et circuits sur plusieurs jours.",
+    features: ["5 passagers", "Toit panoramique", "Climatisation"],
+  },
 ] as const;
 
 export const steps = [
@@ -161,6 +174,6 @@ export const faq = [
 export const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#tarifs", label: "Tarifs" },
-  { href: "#vehicule", label: "Le véhicule" },
+  { href: "#vehicule", label: "La flotte" },
   { href: "#faq", label: "FAQ" },
 ] as const;

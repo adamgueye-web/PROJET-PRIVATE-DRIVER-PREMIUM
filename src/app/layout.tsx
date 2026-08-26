@@ -26,18 +26,39 @@ const generalSans = localFont({
   display: "swap",
 });
 
+const seoDescription =
+  "Transferts aéroport AIBD, location avec chauffeur et excursions en van ou SUV climatisé. Kia Sportage, Ford Escape et vans 7 places. Prix fixe annoncé à l'avance, aucune négociation.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name} — Transferts privés avec chauffeur à Dakar et au Sénégal`,
-  description:
-    "Transferts aéroport AIBD, mises à disposition et excursions en van climatisé avec chauffeur privé. Prix fixe annoncé à l'avance, aucune négociation.",
+  title: `${site.name} — Transferts & location avec chauffeur à Dakar et au Sénégal`,
+  description: seoDescription,
+  keywords: [
+    "chauffeur privé Dakar",
+    "transfert aéroport AIBD",
+    "location avec chauffeur Sénégal",
+    "van avec chauffeur Dakar",
+    "SUV avec chauffeur",
+    "Kia Sportage chauffeur",
+    "excursion Sénégal chauffeur",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
+    url: site.url,
     siteName: site.name,
-    title: `${site.name} — Chauffeur privé au Sénégal`,
+    title: `${site.name} — Transferts & location avec chauffeur au Sénégal`,
     description:
-      "Transferts aéroport, mises à disposition et excursions en van climatisé. Prix fixe, réponse sous 15 minutes.",
+      "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Transferts & location avec chauffeur au Sénégal`,
+    description:
+      "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
   },
 };
 
