@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
-import { site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,19 +26,19 @@ const generalSans = localFont({
 });
 
 const seoDescription =
-  "Transferts aéroport AIBD, location avec chauffeur et excursions en van ou SUV climatisé. Kia Sportage, Ford Escape et vans 7 places. Prix fixe annoncé à l'avance, aucune négociation.";
+  "Transferts aéroport AIBD, location avec chauffeur et excursions en van ou SUV confortables, spacieux et climatisés. Vans 7 places et SUV haut de gamme. Prix fixe annoncé à l'avance, aucune négociation.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: `${site.name} — Transferts & location avec chauffeur à Dakar et au Sénégal`,
+  metadataBase: new URL("https://private-driver-premium.vercel.app"),
+  title: "SenegalDrive — Transferts & location avec chauffeur à Dakar et au Sénégal",
   description: seoDescription,
   keywords: [
     "chauffeur privé Dakar",
     "transfert aéroport AIBD",
     "location avec chauffeur Sénégal",
     "van avec chauffeur Dakar",
-    "SUV avec chauffeur",
-    "Kia Sportage chauffeur",
+    "SUV avec chauffeur Dakar",
+    "SUV climatisé Sénégal",
     "excursion Sénégal chauffeur",
   ],
   alternates: {
@@ -48,15 +47,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: site.url,
-    siteName: site.name,
-    title: `${site.name} — Transferts & location avec chauffeur au Sénégal`,
+    url: "https://private-driver-premium.vercel.app",
+    siteName: "SenegalDrive",
+    title: "SenegalDrive — Transferts & location avec chauffeur au Sénégal",
     description:
       "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Transferts & location avec chauffeur au Sénégal`,
+    title: "SenegalDrive — Transferts & location avec chauffeur au Sénégal",
     description:
       "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
   },

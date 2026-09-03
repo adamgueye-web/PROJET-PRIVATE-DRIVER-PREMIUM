@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/site";
 
 export const alt =
   "SenegalDrive — Transferts et location avec chauffeur, van ou SUV, à Dakar et au Sénégal";
@@ -60,7 +59,7 @@ export default function OpengraphImage() {
               color: "#D9A441",
             }}
           >
-            Chauffeur privé · {site.location}
+            Chauffeur privé · Dakar — Sénégal
           </div>
           <div
             style={{
