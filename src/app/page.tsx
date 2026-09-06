@@ -22,8 +22,8 @@ import {
 import heroDesktop from "@/images/hero-van-desktop.webp";
 import heroMobile from "@/images/hero-van-mobile.webp";
 import van3 from "@/images/van-3.webp";
-import van4 from "@/images/van-4.webp";
 import van5 from "@/images/van-5.webp";
+import van7 from "@/images/van-7.webp";
 import pajero1 from "@/images/pajero-1.webp";
 import pajero2 from "@/images/pajero-2.webp";
 import kiaSportage from "@/images/kia-sportage.jpeg";
@@ -39,7 +39,7 @@ const defaultWaLink = waLink(
 // Images du carrousel Van (3 photos)
 const vanImages = [
   { src: van3, alt: "Van 7 places noir avec chauffeur privé au Sénégal" },
-  { src: van4, alt: "Van moderne et climatisé vue extérieure trois-quarts" },
+  { src: van7, alt: "Van moderne et spacieux avec chauffeur privé à Dakar" },
   { src: van5, alt: "Intérieur spacieux et confort du van pour passagers et bagages" },
 ];
 
