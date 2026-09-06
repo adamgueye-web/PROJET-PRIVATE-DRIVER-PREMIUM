@@ -30,7 +30,7 @@ const seoDescription =
   "Transferts aéroport AIBD, location avec chauffeur et excursions en van ou SUV confortables, spacieux et climatisés. Vans 7 places et SUV haut de gamme. Prix fixe annoncé à l'avance, aucune négociation.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://private-driver-premium.vercel.app"),
+  metadataBase: new URL("https://www.senegaldrive.com"),
   title: "SenegalDrive — Transferts & location avec chauffeur à Dakar et au Sénégal",
   description: seoDescription,
   keywords: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://private-driver-premium.vercel.app",
+    url: "https://www.senegaldrive.com",
     siteName: "SenegalDrive",
     title: "SenegalDrive — Transferts & location avec chauffeur au Sénégal",
     description:

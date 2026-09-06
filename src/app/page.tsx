@@ -28,13 +28,13 @@ import pajero1 from "@/images/pajero-1.webp";
 import pajero2 from "@/images/pajero-2.webp";
 import kiaSportage from "@/images/kia-sportage.jpeg";
 
-// Lien WhatsApp direct : modifiez le numéro ou le texte pré-rempli ici si besoin
+// Lien WhatsApp direct : sans message pré-rempli par défaut pour laisser le client exprimer son besoin
 const WHATSAPP_NUMBER = "33698511669";
-const waLink = (message: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-const defaultWaLink = waLink(
-  "Bonjour SenegalDrive, je souhaite un devis pour un transfert."
-);
+const waLink = (message?: string) =>
+  message
+    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+    : `https://wa.me/${WHATSAPP_NUMBER}`;
+const defaultWaLink = waLink();
 
 // Images du carrousel Van (3 photos)
 const vanImages = [
