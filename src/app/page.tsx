@@ -29,7 +29,7 @@ import pajero2 from "@/images/pajero-2.webp";
 import kiaSportage from "@/images/kia-sportage.jpeg";
 
 // Lien WhatsApp direct : sans message pré-rempli par défaut pour laisser le client exprimer son besoin
-const WHATSAPP_NUMBER = "33698511669";
+const WHATSAPP_NUMBER = "221782087080";
 const waLink = (message?: string) =>
   message
     ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
@@ -629,9 +629,8 @@ export default function Home() {
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1024px) 560px, 100vw"
-                      className={`object-cover transition-opacity duration-700 ${
-                        idx === vanSlide ? "opacity-100" : "opacity-0 pointer-events-none"
-                      }`}
+                      className={`object-cover transition-opacity duration-700 ${idx === vanSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
                       priority={idx === 0}
                     />
                   ))}
@@ -647,11 +646,10 @@ export default function Home() {
                         type="button"
                         onClick={() => setVanSlide(idx)}
                         aria-label={`Afficher la photo ${idx + 1}`}
-                        className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${
-                          idx === vanSlide
+                        className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${idx === vanSlide
                             ? "w-6 bg-gold"
                             : "w-2 bg-white/50 hover:bg-white/90"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
@@ -689,9 +687,8 @@ export default function Home() {
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1024px) 560px, 100vw"
-                      className={`object-cover transition-opacity duration-700 ${
-                        idx === suvSlide ? "opacity-100" : "opacity-0 pointer-events-none"
-                      }`}
+                      className={`object-cover transition-opacity duration-700 ${idx === suvSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
                       priority={idx === 0}
                     />
                   ))}
@@ -707,11 +704,10 @@ export default function Home() {
                         type="button"
                         onClick={() => setSuvSlide(idx)}
                         aria-label={`Afficher la photo ${idx + 1}`}
-                        className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${
-                          idx === suvSlide
+                        className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${idx === suvSlide
                             ? "w-6 bg-gold"
                             : "w-2 bg-white/50 hover:bg-white/90"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
