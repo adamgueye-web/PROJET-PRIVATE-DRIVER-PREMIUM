@@ -21,9 +21,10 @@ import {
 
 import heroDesktop from "@/images/hero-van-desktop.webp";
 import heroMobile from "@/images/hero-van-mobile.webp";
-import van3 from "@/images/van-3.webp";
-import van5 from "@/images/van-5.webp";
-import van7 from "@/images/van-7.webp";
+import vanCarnival1 from "@/images/van-carnival-1.webp";
+import vanCarnival2 from "@/images/van-carnival-2.webp";
+import vanCarnival3 from "@/images/van-carnival-3.webp";
+import vanCarnival4 from "@/images/van-carnival-4.webp";
 import pajero1 from "@/images/pajero-1.webp";
 import pajero2 from "@/images/pajero-2.webp";
 import kiaSportage from "@/images/kia-sportage.jpeg";
@@ -36,11 +37,12 @@ const waLink = (message?: string) =>
     : `https://wa.me/${WHATSAPP_NUMBER}`;
 const defaultWaLink = waLink();
 
-// Images du carrousel Van (3 photos)
+// Images du carrousel Van (Kia Carnival - 4 photos)
 const vanImages = [
-  { src: van3, alt: "Van 7 places noir avec chauffeur privé au Sénégal" },
-  { src: van7, alt: "Van moderne et spacieux avec chauffeur privé à Dakar" },
-  { src: van5, alt: "Intérieur spacieux et confort du van pour passagers et bagages" },
+  { src: vanCarnival1, alt: "Van Kia Carnival moderne avec chauffeur privé au Sénégal" },
+  { src: vanCarnival2, alt: "Van Kia Carnival accès spacieux et confort à bord" },
+  { src: vanCarnival3, alt: "Sièges capitaines grand confort en cuir du Van Kia Carnival" },
+  { src: vanCarnival4, alt: "Intérieur spacieux et climatisé du Van Kia Carnival pour passagers et bagages" },
 ];
 
 // Images du carrousel SUV (mix Pajero & Kia Sportage - 3 photos)
