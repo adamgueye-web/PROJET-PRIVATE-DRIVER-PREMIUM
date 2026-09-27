@@ -262,7 +262,7 @@ export default function Home() {
                 Véhicules récents
               </h3>
               <p className="text-base leading-relaxed text-stone">
-                Climatisés, wifi, eau offerte.
+                Climatisés, confortables, spacieux.
               </p>
             </div>
 
@@ -350,7 +350,7 @@ export default function Home() {
                   Location avec chauffeur
                 </h3>
                 <p className="text-base leading-relaxed text-stone">
-                  Un véhicule et son chauffeur, de la demi-journée à plusieurs jours. Van pour les groupes, SUV pour la ville et les trajets à quelques-uns.
+                  Un véhicule et son chauffeur, de la demi-journée à plusieurs jours. Van pour les groupes, SUV pour la ville et les trajets avec moins de personnes.
                 </p>
                 <div className="mt-6 grow" aria-hidden="true" />
                 <ul className="grid gap-2.5 border-t border-ink/8 pt-5">
@@ -647,8 +647,8 @@ export default function Home() {
                         onClick={() => setVanSlide(idx)}
                         aria-label={`Afficher la photo ${idx + 1}`}
                         className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${idx === vanSlide
-                            ? "w-6 bg-gold"
-                            : "w-2 bg-white/50 hover:bg-white/90"
+                          ? "w-6 bg-gold"
+                          : "w-2 bg-white/50 hover:bg-white/90"
                           }`}
                       />
                     ))}
@@ -705,8 +705,8 @@ export default function Home() {
                         onClick={() => setSuvSlide(idx)}
                         aria-label={`Afficher la photo ${idx + 1}`}
                         className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${idx === suvSlide
-                            ? "w-6 bg-gold"
-                            : "w-2 bg-white/50 hover:bg-white/90"
+                          ? "w-6 bg-gold"
+                          : "w-2 bg-white/50 hover:bg-white/90"
                           }`}
                       />
                     ))}
