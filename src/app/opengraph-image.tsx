@@ -1,11 +1,15 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "SenegalDrive — Transferts et location avec chauffeur, van ou SUV, à Dakar et au Sénégal";
+  "SenegalDrive — Transferts et location avec chauffeur en SUV, van ou minibus à Dakar et au Sénégal";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logo = await readFile(join(process.cwd(), "public/brand/logo-horizontal-on-dark.png"));
+
   return new ImageResponse(
     (
       <div
@@ -22,30 +26,16 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Logo : étoile dorée + nom */}
-        <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-          <div
-            style={{
-              width: 92,
-              height: 92,
-              borderRadius: 22,
-              background: "#D9A441",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <svg width="58" height="58" viewBox="0 0 24 24">
-              <polygon
-                points="12,2.6 14.7,9.3 21.9,9.7 16.3,14.3 18.2,21.4 12,17.4 5.8,21.4 7.7,14.3 2.1,9.7 9.3,9.3"
-                fill="#0A1721"
-              />
-            </svg>
-          </div>
-          <div style={{ display: "flex", fontSize: 44, fontWeight: 600 }}>
-            <span style={{ color: "#ffffff" }}>Senegal</span>
-            <span style={{ color: "#D9A441" }}>Drive</span>
-          </div>
+        {/* Logo horizontal officiel sur fond sombre ; son PNG a des marges transparentes. */}
+        <div style={{ display: "flex", position: "relative", width: 500, height: 100, overflow: "hidden" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`data:image/png;base64,${logo.toString("base64")}`}
+            alt="SenegalDrive — Chauffeur privé"
+            width={500}
+            height={500}
+            style={{ position: "absolute", top: -200, left: 0 }}
+          />
         </div>
 
         {/* Accroche principale */}
@@ -64,13 +54,13 @@ export default function OpengraphImage() {
           <div
             style={{
               display: "flex",
-              fontSize: 72,
+              fontSize: 62,
               fontWeight: 600,
               lineHeight: 1.06,
               maxWidth: 900,
             }}
           >
-            Transferts &amp; location avec chauffeur, van ou SUV.
+            Transferts &amp; location avec chauffeur. SUV, vans et minibus.
           </div>
         </div>
 

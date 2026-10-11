@@ -27,7 +27,7 @@ const generalSans = localFont({
 });
 
 const seoDescription =
-  "Transferts aéroport AIBD, location avec chauffeur et excursions en van ou SUV confortables, spacieux et climatisés. Vans 7 places et SUV haut de gamme. Prix fixe annoncé à l'avance, aucune négociation.";
+  "Transferts aéroport AIBD, location avec chauffeur et excursions à Dakar et au Sénégal. SUV, vans et minibus adaptés à votre groupe. Prix annoncé à l'avance, minibus sur devis.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.senegaldrive.com"),
@@ -40,6 +40,8 @@ export const metadata: Metadata = {
     "van avec chauffeur Dakar",
     "SUV avec chauffeur Dakar",
     "SUV climatisé Sénégal",
+    "minibus avec chauffeur Dakar",
+    "transfert de groupe Sénégal",
     "excursion Sénégal chauffeur",
   ],
   alternates: {
@@ -52,13 +54,13 @@ export const metadata: Metadata = {
     siteName: "SenegalDrive",
     title: "SenegalDrive — Transferts & location avec chauffeur au Sénégal",
     description:
-      "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
+      "Transferts aéroport, location avec chauffeur et excursions. SUV, vans et minibus adaptés à votre groupe, avec prix annoncé à l'avance.",
   },
   twitter: {
     card: "summary_large_image",
     title: "SenegalDrive — Transferts & location avec chauffeur au Sénégal",
     description:
-      "Transferts aéroport, location avec chauffeur et excursions. Van ou SUV climatisé, prix fixe, réponse sous 15 minutes.",
+      "Transferts aéroport, location avec chauffeur et excursions. SUV, vans et minibus adaptés à votre groupe, avec prix annoncé à l'avance.",
   },
 };
 

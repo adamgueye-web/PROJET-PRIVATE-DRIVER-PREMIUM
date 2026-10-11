@@ -28,14 +28,14 @@ import vanCarnival4 from "@/images/van-carnival-4.webp";
 import pajero1 from "@/images/pajero-1.webp";
 import pajero2 from "@/images/pajero-2.webp";
 import kiaSportage from "@/images/kia-sportage.jpeg";
+import minibusFront from "@/images/minibus-exterior-front.webp";
+import minibusSide from "@/images/minibus-exterior-side.webp";
+import minibusSeats from "@/images/minibus-interior-seats.webp";
+import minibusRear from "@/images/minibus-interior-rear.webp";
 
-// Lien WhatsApp direct : sans message pré-rempli par défaut pour laisser le client exprimer son besoin
+// Lien WhatsApp direct : le client rédige son propre message.
 const WHATSAPP_NUMBER = "221782087080";
-const waLink = (message?: string) =>
-  message
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
-    : `https://wa.me/${WHATSAPP_NUMBER}`;
-const defaultWaLink = waLink();
+const defaultWaLink = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 // Images du carrousel Van (Kia Carnival - 4 photos)
 const vanImages = [
@@ -52,11 +52,34 @@ const suvImages = [
   { src: pajero2, alt: "SUV Mitsubishi Pajero haut de gamme pour les trajets au Sénégal" },
 ];
 
+const minibusImages = [
+  { src: minibusFront, alt: "Minibus blanc et argent de trois quarts avant" },
+  { src: minibusSeats, alt: "Sièges clairs dans l'espace passagers du minibus" },
+  { src: minibusSide, alt: "Minibus de profil avec la porte latérale ouverte" },
+  { src: minibusRear, alt: "Espace passagers du minibus vu depuis l'arrière" },
+];
+
+function BrandLogo() {
+  return (
+    <span className="relative block h-12 w-[200px] shrink-0 overflow-hidden">
+      <Image
+        src="/brand/logo-horizontal-on-dark.png"
+        alt="SenegalDrive — Chauffeur privé"
+        width={1080}
+        height={1080}
+        sizes="200px"
+        className="absolute top-1/2 left-1/2 h-auto w-full max-w-none -translate-x-1/2 -translate-y-1/2"
+      />
+    </span>
+  );
+}
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [showMobileCta, setShowMobileCta] = useState(false);
   const [vanSlide, setVanSlide] = useState(0);
   const [suvSlide, setSuvSlide] = useState(0);
+  const [minibusSlide, setMinibusSlide] = useState(0);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const heroCtaRef = useRef<HTMLAnchorElement>(null);
 
@@ -65,6 +88,7 @@ export default function Home() {
     const timer = setInterval(() => {
       setVanSlide((prev) => (prev + 1) % vanImages.length);
       setSuvSlide((prev) => (prev + 1) % suvImages.length);
+      setMinibusSlide((prev) => (prev + 1) % minibusImages.length);
     }, 2000);
     return () => clearInterval(timer);
   }, []);
@@ -127,25 +151,9 @@ export default function Home() {
         }}
       >
         <div className="mx-auto flex h-18 max-w-[1200px] items-center justify-between gap-6 px-6">
-          {/* Logo */}
-          <a href="#top" className="flex items-center gap-2.5 text-white">
-            <span className="grid size-10 flex-none place-items-center rounded-xl bg-gold">
-              <svg viewBox="0 0 24 24" className="block size-[19px]" aria-hidden="true">
-                <polygon
-                  points="12,2.6 14.7,9.3 21.9,9.7 16.3,14.3 18.2,21.4 12,17.4 5.8,21.4 7.7,14.3 2.1,9.7 9.3,9.3"
-                  fill="#0A1721"
-                />
-              </svg>
-            </span>
-            <span className="grid gap-0.5">
-              <span className="font-display text-xl leading-none tracking-[-0.02em]">
-                <span className="font-medium">Senegal</span>
-                <span className="font-semibold text-gold">Drive</span>
-              </span>
-              <span className="text-[9px] font-medium tracking-[0.22em] text-mist uppercase">
-                Chauffeur privé
-              </span>
-            </span>
+          {/* Logo horizontal pour fond sombre */}
+          <a href="#top" aria-label="SenegalDrive, retour en haut de page" className="flex items-center text-white">
+            <BrandLogo />
           </a>
 
           {/* Liens de navigation (Desktop) */}
@@ -211,9 +219,9 @@ export default function Home() {
                 Partout au Sénégal.
               </h1>
               <p className="mb-9 max-w-[620px] text-[clamp(16px,1.4vw,17px)] leading-relaxed text-mist text-pretty">
-                Transferts aéroport, locations avec chauffeur et excursions. Van ou SUV
-                climatisé selon votre trajet. Prix fixe annoncé à l&apos;avance, aucune
-                négociation.
+                Transferts aéroport, location avec chauffeur et excursions. SUV, van
+                ou minibus : le véhicule adapté à votre groupe et à votre trajet,
+                avec un prix annoncé à l&apos;avance.
               </p>
             </div>
 
@@ -261,10 +269,10 @@ export default function Home() {
             <div>
               <Snowflake className="size-6.5 text-terracotta" aria-hidden="true" />
               <h3 className="mt-3.5 mb-1.5 font-display text-xl font-medium">
-                Véhicules récents
+                Un véhicule adapté à votre groupe
               </h3>
               <p className="text-base leading-relaxed text-stone">
-                Climatisés, confortables, spacieux.
+                SUV, vans et minibus confortables et climatisés.
               </p>
             </div>
 
@@ -352,7 +360,7 @@ export default function Home() {
                   Location avec chauffeur
                 </h3>
                 <p className="text-base leading-relaxed text-stone">
-                  Un véhicule et son chauffeur, de la demi-journée à plusieurs jours. Van pour les groupes, SUV pour la ville et les trajets avec moins de personnes.
+                  De la demi-journée à plusieurs jours, voyagez avec un chauffeur dédié et un véhicule adapté à la taille de votre groupe.
                 </p>
                 <div className="mt-6 grow" aria-hidden="true" />
                 <ul className="grid gap-2.5 border-t border-ink/8 pt-5">
@@ -366,7 +374,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-2.5 text-sm text-ink/70">
                     <Check className="size-3.5 shrink-0 text-terracotta" aria-hidden="true" />
-                    Van ou SUV
+                    SUV, van ou minibus
                   </li>
                 </ul>
               </article>
@@ -426,7 +434,7 @@ export default function Home() {
                   Corporate et événementiel
                 </h3>
                 <p className="text-base leading-relaxed text-stone">
-                  Délégations, séminaires, ONG, mariages. Facturation entreprise et devis sur mesure.
+                  Délégations, séminaires, ONG, mariages : des véhicules adaptés aux groupes, avec facturation entreprise et devis sur mesure.
                 </p>
                 <div className="mt-6 grow" aria-hidden="true" />
                 <ul className="grid gap-2.5 border-t border-ink/8 pt-5">
@@ -580,8 +588,9 @@ export default function Home() {
 
             <div className="mt-7 flex flex-wrap items-center justify-between gap-6">
               <p className="max-w-[620px] text-base leading-relaxed text-mist">
-                Tous les prix incluent le carburant, le péage, le chauffeur et
-                l&apos;attente. Pas de supplément bagage. Pas de majoration de nuit.
+                Les tarifs affichés incluent le carburant, le péage, le chauffeur
+                et l&apos;attente. Pas de supplément bagage ni de majoration de nuit.
+                Tarif minibus sur devis selon le trajet et la taille du groupe.
               </p>
               <a
                 href={defaultWaLink}
@@ -609,17 +618,17 @@ export default function Home() {
                 La flotte
               </p>
               <h2 className="mb-5 font-display text-[clamp(28px,3.4vw,44px)] leading-[1.1] font-semibold tracking-[-0.02em]">
-                Van ou SUV. Le bon véhicule pour chaque trajet.
+                SUV, van ou minibus. Le bon véhicule pour chaque trajet.
               </h2>
               <p className="text-[17px] leading-relaxed text-mist">
-                Le van pour les transferts et les groupes, le SUV pour la location
-                avec chauffeur et les trajets à quelques-uns. Même exigence
+                Le SUV pour les trajets à quelques-uns, le van pour les familles
+                et les transferts, le minibus pour les groupes. Même exigence
                 d&apos;entretien et de propreté, quel que soit le véhicule qui vient
                 vous chercher.
               </p>
             </div>
 
-            <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+            <div className="grid gap-6 lg:grid-cols-3">
               {/* Carte Véhicule 1 : Van */}
               <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-white/8 bg-ink-900 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
                 {/* Carrousel d'images automatique 2s */}
@@ -659,15 +668,12 @@ export default function Home() {
 
                 <div className="flex grow flex-col p-6 lg:p-7">
                   <h3 className="mb-2.5 font-display text-[22px] font-medium text-white">
-                    Van 7 places
+                    Vans spacieux
                   </h3>
                   <p className="mb-6 text-base leading-relaxed text-mist">
                     La référence des transferts aéroport : groupes, familles et bagages volumineux voyagent large et à l&apos;aise.
                   </p>
                   <ul className="mt-auto flex flex-wrap gap-2.5">
-                    <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
-                      10 passagers
-                    </li>
                     <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
                       Grand volume bagages
                     </li>
@@ -724,13 +730,59 @@ export default function Home() {
                   </p>
                   <ul className="mt-auto flex flex-wrap gap-2.5">
                     <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
-                      4 passagers
-                    </li>
-                    <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
                       Grand confort &amp; espace
                     </li>
                     <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
                       Climatisation
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              {/* Carte Véhicule 3 : minibus */}
+              <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-white/8 bg-ink-900 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                <div className="relative aspect-video overflow-hidden">
+                  {minibusImages.map((image, idx) => (
+                    <Image
+                      key={idx}
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 560px, 100vw"
+                      placeholder="blur"
+                      className={`object-cover transition-opacity duration-700 ${idx === minibusSlide ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                    />
+                  ))}
+                  <span className="absolute top-4 left-4 z-10 rounded-full bg-ink/85 px-3.5 py-1.5 text-xs font-medium tracking-[0.14em] text-gold uppercase backdrop-blur-md">
+                    Minibus
+                  </span>
+                  <div className="absolute inset-x-0 bottom-3.5 z-10 flex items-center justify-center gap-2">
+                    {minibusImages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setMinibusSlide(idx)}
+                        aria-label={`Afficher la photo ${idx + 1} du minibus`}
+                        className={`h-2 cursor-pointer rounded-full transition-all duration-300 ${idx === minibusSlide ? "w-6 bg-gold" : "w-2 bg-white/50 hover:bg-white/90"}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="flex grow flex-col p-6 lg:p-7">
+                  <h3 className="mb-2.5 font-display text-[22px] font-medium text-white">
+                    Minibus — voyages en groupe
+                  </h3>
+                  <p className="mb-6 text-base leading-relaxed text-mist">
+                    Pour les transferts de groupe, séminaires, événements et excursions : voyagez ensemble, avec votre chauffeur et de la place pour les bagages.
+                  </p>
+                  <ul className="mt-auto flex flex-wrap gap-2.5">
+                    <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
+                      Groupes &amp; événements
+                    </li>
+                    <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
+                      Bagages
+                    </li>
+                    <li className="rounded-full border border-white/8 px-4 py-2 text-sm text-white">
+                      Sur devis
                     </li>
                   </ul>
                 </div>
@@ -748,7 +800,7 @@ export default function Home() {
                 <ArrowRight className="size-[17px]" aria-hidden="true" />
               </a>
               <span className="text-base text-mist">
-                Van ou SUV : dites-nous votre trajet, on vous conseille.
+                SUV, van ou minibus : dites-nous votre trajet, on vous conseille.
               </span>
             </div>
           </div>
@@ -882,7 +934,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Saly.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -922,7 +974,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Saint-Louis.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -962,7 +1014,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Lac Rose.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -1002,7 +1054,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Sine Saloum.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -1042,7 +1094,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Touba.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -1082,7 +1134,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <a
-                  href={waLink("Bonjour SenegalDrive, je souhaite un devis pour un trajet vers Somone.")}
+                  href={defaultWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-full border border-ink/12 px-5 py-3 text-[15px] font-medium text-ink transition group-hover:border-gold group-hover:bg-gold group-hover:text-ink"
@@ -1172,7 +1224,7 @@ export default function Home() {
                 <Plus className="faq-icon size-4.5 flex-none text-gold transition-transform" aria-hidden="true" />
               </summary>
               <p className="mt-3.5 max-w-[640px] text-base leading-relaxed text-stone">
-                Jusqu&apos;à 6 grandes valises et les bagages à main correspondants. Aucun supplément bagage. Au-delà, dites-le nous : nous adaptons.
+                L&apos;espace disponible dépend du véhicule et de la taille du groupe. Indiquez-nous vos bagages lors de la réservation pour que nous vous proposions le véhicule adapté, sans supplément bagage.
               </p>
             </details>
 
@@ -1190,6 +1242,17 @@ export default function Home() {
             {/* Question 5 */}
             <details className="border-t border-ink/8 py-5.5">
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-medium">
+                Proposez-vous un véhicule pour les groupes ?
+                <Plus className="faq-icon size-4.5 flex-none text-gold transition-transform" aria-hidden="true" />
+              </summary>
+              <p className="mt-3.5 max-w-[640px] text-base leading-relaxed text-stone">
+                Oui, nos minibus permettent d&apos;organiser transferts, excursions et déplacements professionnels en groupe. Indiquez-nous le nombre de voyageurs et de bagages pour recevoir un devis adapté.
+              </p>
+            </details>
+
+            {/* Question 6 */}
+            <details className="border-t border-ink/8 py-5.5">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-medium">
                 Puis-je annuler ma réservation ?
                 <Plus className="faq-icon size-4.5 flex-none text-gold transition-transform" aria-hidden="true" />
               </summary>
@@ -1198,7 +1261,7 @@ export default function Home() {
               </p>
             </details>
 
-            {/* Question 6 */}
+            {/* Question 7 */}
             <details className="border-t border-b border-ink/8 py-5.5">
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-medium">
                 Intervenez-vous en dehors de Dakar ?
@@ -1219,25 +1282,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1200px] px-6">
           <div>
             <div className="mb-3.5">
-              <div className="flex items-center gap-2.5 text-white">
-                <span className="grid size-10 flex-none place-items-center rounded-xl bg-gold">
-                  <svg viewBox="0 0 24 24" className="block size-[19px]" aria-hidden="true">
-                    <polygon
-                      points="12,2.6 14.7,9.3 21.9,9.7 16.3,14.3 18.2,21.4 12,17.4 5.8,21.4 7.7,14.3 2.1,9.7 9.3,9.3"
-                      fill="#0A1721"
-                    />
-                  </svg>
-                </span>
-                <span className="grid gap-0.5">
-                  <span className="font-display text-xl leading-none tracking-[-0.02em]">
-                    <span className="font-medium">Senegal</span>
-                    <span className="font-semibold text-gold">Drive</span>
-                  </span>
-                  <span className="text-[9px] font-medium tracking-[0.22em] text-mist uppercase">
-                    Chauffeur privé
-                  </span>
-                </span>
-              </div>
+              <BrandLogo />
             </div>
             <p className="text-base text-mist">
               Arrivez sereinement. Partout au Sénégal.
